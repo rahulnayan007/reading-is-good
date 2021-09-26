@@ -8,4 +8,6 @@ import com.readingisgood.warehouse.entity.Book;
 @Repository
 public interface BookRepository extends MongoRepository<Book, String> {
 
+	public Book findByIsbn(String isbn);
+	
 }
