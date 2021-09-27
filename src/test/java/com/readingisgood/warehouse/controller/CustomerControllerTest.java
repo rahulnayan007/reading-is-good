@@ -49,7 +49,17 @@ class CustomerControllerTest {
 		customer.setLastName("Nayan");
 		customer.setMobile("8764563456");
 		customer.setEmail("rn@hotmail.com");
-		customer.setAddresses(new ArrayList<Address>());
+		Address address = new Address();
+		address.setAddressId("876");
+		address.setAddressLine1("Flat no 007");
+		address.setAddressLine2("Gandhi Road");
+		address.setCity("Delhi");
+		address.setState("Delhi");
+		address.setType("home");
+		address.setZipcode("100001");
+		List<Address> addresses = new ArrayList<Address>();
+		addresses.add(address);
+		customer.setAddresses(addresses);
 		String json = mapper.writeValueAsString(customer);
 		Mockito.when(customerService.addCustomer(customer)).thenReturn(customer);
 		mockMvc.perform(post("/api/customer").contentType(MediaType.APPLICATION_JSON).characterEncoding("utf-8")
