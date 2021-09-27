@@ -1,0 +1,427 @@
+{
+	"info": {
+		"_postman_id": "dff9de38-b64b-41e2-9cbd-72368cb85137",
+		"name": "Book-Warehouse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add-customer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMjAyMSIsImV4cCI6MTYzMjc0NjY0OSwiaWF0IjoxNjMyNzM5NDQ5fQ.-1mH_Utsv1kCbT_strDl04HapQbYYja3m0Z9jA6br9Y",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerId\": \"CUST123\",\r\n    \"firstName\": \"Rahul\",\r\n    \"lastName\": \"Nayan\",\r\n    \"mobile\": \"8764563456\",\r\n    \"email\": \"rn@hotmail.com\",\r\n    \"addresses\": [\r\n        {\r\n            \"addressId\": \"695\",\r\n            \"addressLine1\": \"11 Park Avenue\",\r\n            \"addressLine2\": \"Pheonix Citadel\",\r\n            \"zipcode\": \"560000\",\r\n            \"city\": \"Begaluru\",\r\n            \"state\": \"Karnataka\",\r\n            \"type\": \"Home\"\r\n        },\r\n        {\r\n            \"addressId\": \"696\",\r\n            \"addressLine1\": \"A To Z Corp\",\r\n            \"addressLine2\": \"It Park\",\r\n            \"zipcode\": \"560011\",\r\n            \"city\": \"Bengaluru\",\r\n            \"state\": \"Karnataka\",\r\n            \"type\": \"Office\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customer/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add-customers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMjAyMSIsImV4cCI6MTYzMjc0NjY0OSwiaWF0IjoxNjMyNzM5NDQ5fQ.-1mH_Utsv1kCbT_strDl04HapQbYYja3m0Z9jA6br9Y",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"customerId\": \"CUST1534\",\r\n            \"firstName\": \"Avinash\",\r\n            \"lastName\": \"Mahale\",\r\n            \"mobile\": \"7656543544\",\r\n            \"email\": \"avi@gmail.com\",\r\n            \"addresses\": [\r\n                {\r\n                    \"addressId\": \"697\",\r\n                    \"addressLine1\": \"1D Kalptaru\",\r\n                    \"addressLine2\": \"GB Road\",\r\n                    \"zipcode\": \"400001\",\r\n                    \"city\": \"Mumbai\",\r\n                    \"state\": \"Maharashtra\",\r\n                    \"type\": \"Home\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"customerId\": \"CUST129\",\r\n            \"firstName\": \"Sabir\",\r\n            \"lastName\": \"Ali\",\r\n            \"mobile\": \"7766567455\",\r\n            \"email\": \"sabir@yahoo.com\",\r\n            \"addresses\": [\r\n                {\r\n                    \"addressId\": \"699\",\r\n                    \"addressLine1\": \"1A\",\r\n                    \"addressLine2\": \"Amazon\",\r\n                    \"zipcode\": \"100001\",\r\n                    \"city\": \"Old Delhi\",\r\n                    \"state\": \"Delhi\",\r\n                    \"type\": \"Office\"\r\n                },\r\n                {\r\n                    \"addressId\": \"700\",\r\n                    \"addressLine1\": \"H No. 40, Sabir\",\r\n                    \"addressLine2\": \"Gandhi Road\",\r\n                    \"zipcode\": \"110011\",\r\n                    \"city\": \"New Delhi\",\r\n                    \"state\": \"Delhi\",\r\n                    \"type\": \"Home\"\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customer/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add-book",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMjAyMSIsImV4cCI6MTYzMjc0NTA1NSwiaWF0IjoxNjMyNzM3ODU1fQ.KArLtLtLMu2cBagZvxqRvG8uIozZFRTCf_4xBdMlf-w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"isbn\": \"9781786330895\",\r\n    \"title\": \"Ikigai - The Japanese Secret To A Long And Happy Life\",\r\n    \"edition\": \"1\",\r\n    \"authors\": [\"Hector Garcia\",\"Francesc Miralles\",\"Heather Cleary\"],\r\n    \"publication\": \"Penguin Books\",\r\n    \"price\": \"250\",\r\n    \"stock\": 200\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/book/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"book",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add-books",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMjAyMSIsImV4cCI6MTYzMjc0NTA1NSwiaWF0IjoxNjMyNzM3ODU1fQ.KArLtLtLMu2cBagZvxqRvG8uIozZFRTCf_4xBdMlf-w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"isbn\": \"9780670025299\",\r\n            \"title\": \"How to Create a Mind: The Secret of Human Thought Revealed\",\r\n            \"edition\": \"2\",\r\n            \"authors\": [\"Ray Kurzweil\"],\r\n            \"publication\": \"Viking Penguin\",\r\n            \"price\": \"2099\",\r\n            \"stock\": 10\r\n        },\r\n        {\r\n            \"isbn\": \"0446677450\",\r\n            \"title\": \"Rich Dad Poor Dad\",\r\n            \"edition\": \"5\",\r\n            \"authors\": [\"Robert T. Kiyosaki\", \"Sharon Lechter\"],\r\n            \"publication\": \"Warner Books\",\r\n            \"price\": \"399\",\r\n            \"stock\": 21\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/book/list/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"book",
+						"list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-book-stock",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMjAyMSIsImV4cCI6MTYzMjc0NjY0OSwiaWF0IjoxNjMyNzM5NDQ5fQ.-1mH_Utsv1kCbT_strDl04HapQbYYja3m0Z9jA6br9Y",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"isbn\": \"9780670025299\",\r\n    \"stock\": \"200\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/book",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-order-by-id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMjAyMSIsImV4cCI6MTYzMjc0NjY0OSwiaWF0IjoxNjMyNzM5NDQ5fQ.-1mH_Utsv1kCbT_strDl04HapQbYYja3m0Z9jA6br9Y",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/order/8768TY",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"order",
+						"8768TY"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-orders-between-startDate- endDate",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMjAyMSIsImV4cCI6MTYzMjc1MDQ4MiwiaWF0IjoxNjMyNzQzMjgyfQ.O0kJsqYPhLSCxoTLpof4rCHaM81tOX2QhKrqQVLkCvQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/order/startDate/01-05-19/endDate/19-09-21",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"order",
+						"startDate",
+						"01-05-19",
+						"endDate",
+						"19-09-21"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-orders-for-customer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMjAyMSIsImV4cCI6MTYzMjc1MDQ4MiwiaWF0IjoxNjMyNzQzMjgyfQ.O0kJsqYPhLSCxoTLpof4rCHaM81tOX2QhKrqQVLkCvQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/order/customer/CUST1534",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"order",
+						"customer",
+						"CUST1534"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add-order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMjAyMSIsImV4cCI6MTYzMjc0NTA1NSwiaWF0IjoxNjMyNzM3ODU1fQ.KArLtLtLMu2cBagZvxqRvG8uIozZFRTCf_4xBdMlf-w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderId\": \"8768101\",\r\n    \"customerId\": \"CUST1534\",\r\n    \"bookIsbnList\": [\"0446677450\", \"9781786330895\", \"9780670025299\"],\r\n    \"orderDate\": \"10/05/21\",\r\n    \"status\": \"created\",\r\n    \"totalItems\": \"3\",\r\n    \"total\": \"2340\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/order/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"order",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-statistics-for-customer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMjAyMSIsImV4cCI6MTYzMjc1MDQ4MiwiaWF0IjoxNjMyNzQzMjgyfQ.O0kJsqYPhLSCxoTLpof4rCHaM81tOX2QhKrqQVLkCvQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/statistics/monthly/customer/CUST1534/year/2021",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"statistics",
+						"monthly",
+						"customer",
+						"CUST1534",
+						"year",
+						"2021"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "swagger-api",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMjAyMSIsImV4cCI6MTYzMjczMjc0OCwiaWF0IjoxNjMyNzI1NTQ4fQ.D_rM_PJNs8A70Cl0-GO_eFn5LdqbsXUeiqSg_zf-lOQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api-docs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api-docs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "swagger-ui",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMjAyMSIsImV4cCI6MTYzMjczMjc0OCwiaWF0IjoxNjMyNzI1NTQ4fQ.D_rM_PJNs8A70Cl0-GO_eFn5LdqbsXUeiqSg_zf-lOQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/swagger-ui/index.html",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"swagger-ui",
+						"index.html"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authenticate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"user2021\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

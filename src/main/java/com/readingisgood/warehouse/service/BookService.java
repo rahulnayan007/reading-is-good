@@ -29,6 +29,7 @@ public class BookService {
 	}
 
 	public List<Book> addBooks(List<Book> books) throws Exception {
+		log.debug("addBooks called.");
 		return bookRepository.saveAll(books);
 	}
 
