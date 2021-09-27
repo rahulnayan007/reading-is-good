@@ -1,7 +1,6 @@
 package com.readingisgood.warehouse.service;
 
 import java.text.SimpleDateFormat;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -35,9 +34,6 @@ public class CustomerStatisticsService {
 		SimpleDateFormat monthNameFormat = new SimpleDateFormat("MMM", Locale.ENGLISH);
 		StatisticsResponse statisticsResponse = new StatisticsResponse();
 		Map<String, Statistics> report = statisticsResponse.getReport();
-		if (null == report) {
-			report = new HashMap<String, Statistics>();
-		}
 
 		SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy", Locale.ENGLISH);
 		for (Order order : orders) {

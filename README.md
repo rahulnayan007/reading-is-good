@@ -1,27 +1,31 @@
-# reading-is-good
+## reading-is-good
 centralized warehouse for ReadingIsGood
 
-API Details:-
+## Compile Command
+mvn clean compile test install
 
+## Code coverage report
+\target\site\jacoco\index.html
 
+## API Details:-
 
-1. Authentication API:-
+# 1. Authentication API:-
 POST http://localhost:8080/authenticate
-Request:-
+# Request:-
 {
     "username": "user2021",
     "password": "password"
 }
-Response:-
+# Response:-
 {
     "jwt": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMjAyMSIsImV4cCI6MTYzMjczMjc0OCwiaWF0IjoxNjMyNzI1NTQ4fQ.D_rM_PJNs8A70Cl0-GO_eFn5LdqbsXUeiqSg_zf-lOQ"
 }
 
-Note:- Authorization header in all API calls with value received in jwt field of Authentication API response. 
+# Note:- Authorization header in all API calls with value received in jwt field of Authentication API response. 
 
-2. Add Customer API:-
+# 2. Add Customer API:-
 POST http://localhost:8080/api/customer/
-Request:-
+# Request:-
 {
     "customerId": "CUST123",
     "firstName": "Rahul",
@@ -50,7 +54,7 @@ Request:-
     ]
 }
 
-Response:-
+# Response:-
 {
     "data": {
         "id": "61516acf81a83b451e7a6b62",
@@ -86,9 +90,9 @@ Response:-
     }
 }
 
-3. Add Customers API:-
+# 3. Add Customers API:-
 POST http://localhost:8080/api/customer/list
-Request:-
+# Request:-
 {
     "data": [
         {
@@ -139,7 +143,7 @@ Request:-
     ]
 }
 
-Response:-
+# Response:-
 {
     "data": [
         {
@@ -196,9 +200,9 @@ Response:-
     }
 }
 
-4. Add Book API:-
+# 4. Add Book API:-
 POST http://localhost:8080/api/book/
-Request:-
+# Request:-
 {
     "isbn": "9781786330895",
     "title": "Ikigai - The Japanese Secret To A Long And Happy Life",
@@ -209,7 +213,7 @@ Request:-
     "stock": 200
 }
 
-Response:-
+# Response:-
 {
     "data": {
         "id": "61519b967da255436ac81969",
@@ -231,9 +235,9 @@ Response:-
     }
 }
 
-5. Add Books API:-
+# 5. Add Books API:-
 POST http://localhost:8080/api/book/list/
-Request:-
+# Request:-
 {
     "data": [
         {
@@ -257,7 +261,7 @@ Request:-
     ]
 }
 
-Response:-
+# Response:-
 {
     "data": [
         {
@@ -293,15 +297,15 @@ Response:-
 }
 
 
-6. Update Book API:-
+# 6. Update Book API:-
 PATCH http://localhost:8080/api/book
-Request:-
+# Request:-
 {
     "isbn": "9781786330895",
     "count": "261"
 }
 
-Response:-
+# Response:-
 {
     "data": {
         "id": "6151a5c8745667356039b9c4",
@@ -320,7 +324,8 @@ Response:-
         "message": "success"
     }
 }
-Error Response:-
+
+# Error Response:-
 {
     "data": null,
     "status": {
@@ -329,9 +334,9 @@ Error Response:-
     }
 }
 
-7. Add Order API:-
+# 7. Add Order API:-
 POST http://localhost:8080/api/order/
-Request:-
+# Request:-
 {
     "orderId": "8768TY",
     "customerId": "12345",
@@ -342,7 +347,7 @@ Request:-
     "total": "399"
 }
 
-Response:-
+# Response:-
 {
     "data": {
         "id": "6151a9fab7ae207c216c7e15",
@@ -362,9 +367,9 @@ Response:-
     }
 }
 
-8. Get Order By OrderId API:-
+# 8. Get Order By OrderId API:-
 GET http://localhost:8080/api/order/8768100
-Response:-
+# Response:-
 {
     "data": {
         "id": "6151a6d5745667356039b9c9",
@@ -384,9 +389,9 @@ Response:-
     }
 }
 
-9. Get Orders Within Date Range API:-
+# 9. Get Orders Within Date Range API:-
 GET http://localhost:8080/api/order/startDate/01-05-19/endDate/19-09-21
-Response:-
+# Response:-
 {
     "data": [
         {
@@ -420,9 +425,9 @@ Response:-
     }
 }
 
-10. Get Orders by CustomerID API:-
+# 10. Get Orders by CustomerID API:-
 GET http://localhost:8080/api/order/customer/CUST1534
-Response:-
+# Response:-
 {
     "data": [
         {
@@ -445,9 +450,9 @@ Response:-
     }
 }
 
-11. Get Month wise Statistics by CustomerID API:-
+# 11. Get Month wise Statistics by CustomerID API:-
 http://localhost:8080/api/statistics/monthly/customer/CUST1534/year/2021
-Response:-
+# Response:-
 {
     "data": {
         "report": {
@@ -465,11 +470,11 @@ Response:-
     }
 }
 
-12. Swagger API Docs:-
+# 12. Swagger API Docs:-
 GET http://localhost:8080/api-docs
 
-13. Swagger UI:-
+# 13. Swagger UI:-
 GET http://localhost:8080/swagger-ui/index.html
 
-All business APIs are designed to contain data in response along with satus which tells if the request processing was successful or a failure. 
-SpringBoot, Spring security, MongoDB, swagger, Junit and Jocaco have been used to develop this Application.
+# All business APIs are designed to contain data in response along with satus which tells if the request processing was successful or a failure. 
+# SpringBoot, Spring security, MongoDB, swagger, Junit and Jocaco have been used to develop this Application.

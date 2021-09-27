@@ -29,9 +29,8 @@ class CustomerServiceTest {
 	private CustomerRepository customerRepository;
 
 	@Test
-	public void TestAddCustomer() {
+	public void TestAddCustomer() throws Exception {
 		Customer customer = new Customer();
-		customer.setId("");
 		customer.setCustomerId("CUST123");
 		customer.setFirstName("Rahul");
 		customer.setLastName("Nayan");
@@ -48,9 +47,8 @@ class CustomerServiceTest {
 	}
 
 	@Test
-	public void TestAddCustomers() {
+	public void TestAddCustomers() throws Exception {
 		Customer customer = new Customer();
-		customer.setId("");
 		customer.setCustomerId("CUST123");
 		customer.setFirstName("Rahul");
 		customer.setLastName("Nayan");
