@@ -5,6 +5,11 @@ import java.util.Map;
 
 import lombok.Data;
 
+/**
+ * 
+ * @author rahul
+ *
+ */
 @Data
 public class StatisticsResponse {
 

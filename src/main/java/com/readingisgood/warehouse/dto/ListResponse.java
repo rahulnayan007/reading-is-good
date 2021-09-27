@@ -5,6 +5,12 @@ import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+/**
+ * 
+ * @author rahul
+ *
+ * @param <T>
+ */
 @Data
 @AllArgsConstructor
 public class ListResponse<T> {

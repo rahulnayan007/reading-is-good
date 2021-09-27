@@ -2,6 +2,11 @@ package com.readingisgood.warehouse.dto;
 
 import lombok.Data;
 
+/**
+ * 
+ * @author rahul
+ *
+ */
 @Data
 public class Statistics {
 
