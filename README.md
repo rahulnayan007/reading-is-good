@@ -57,7 +57,6 @@ POST http://localhost:8080/api/customer/
 # Response:-
 {
     "data": {
-        "id": "61516acf81a83b451e7a6b62",
         "customerId": "CUST123",
         "firstName": "Rahul",
         "lastName": "Nayan",
