@@ -3,6 +3,8 @@ centralized warehouse for ReadingIsGood
 
 API Details:-
 
+
+
 1. Authentication API:-
 POST http://localhost:8080/authenticate
 Request:-
@@ -204,13 +206,13 @@ Request:-
     "authors": ["Hector Garcia","Francesc Miralles","Heather Cleary"],
     "publication": "Penguin Books",
     "price": "250",
-    "count": 2
+    "stock": 200
 }
 
 Response:-
 {
     "data": {
-        "id": "61516ce981a83b451e7a6b65",
+        "id": "61519b967da255436ac81969",
         "isbn": "9781786330895",
         "title": "Ikigai - The Japanese Secret To A Long And Happy Life",
         "edition": "1",
@@ -221,7 +223,7 @@ Response:-
         ],
         "publication": "Penguin Books",
         "price": 250,
-        "count": 2
+        "stock": 200
     },
     "status": {
         "code": "1",
@@ -241,7 +243,7 @@ Request:-
             "authors": ["Ray Kurzweil"],
             "publication": "Viking Penguin",
             "price": "2099",
-            "count": 10
+            "stock": 10
         },
         {
             "isbn": "0446677450",
@@ -250,7 +252,7 @@ Request:-
             "authors": ["Robert T. Kiyosaki", "Sharon Lechter"],
             "publication": "Warner Books",
             "price": "399",
-            "count": 21
+            "stock": 21
         }
     ]
 }
@@ -259,7 +261,7 @@ Response:-
 {
     "data": [
         {
-            "id": "61516d4381a83b451e7a6b66",
+            "id": "61519c017da255436ac8196a",
             "isbn": "9780670025299",
             "title": "How to Create a Mind: The Secret of Human Thought Revealed",
             "edition": "2",
@@ -268,10 +270,10 @@ Response:-
             ],
             "publication": "Viking Penguin",
             "price": 2099,
-            "count": 10
+            "stock": 10
         },
         {
-            "id": "61516d4381a83b451e7a6b67",
+            "id": "61519c017da255436ac8196b",
             "isbn": "0446677450",
             "title": "Rich Dad Poor Dad",
             "edition": "5",
@@ -281,7 +283,7 @@ Response:-
             ],
             "publication": "Warner Books",
             "price": 399,
-            "count": 21
+            "stock": 21
         }
     ],
     "status": {
@@ -290,36 +292,40 @@ Response:-
     }
 }
 
+
 6. Update Book API:-
-PUT http://localhost:8080/api/book
+PATCH http://localhost:8080/api/book
 Request:-
 {
-    "id": "61515c73529e6c699ea7ef3b",
     "isbn": "9781786330895",
-    "title": "Ikigai - The Japanese Secret To A Long And Happy Life",
-    "edition": "7",
-    "authors": ["Hector Garcia","Francesc Miralles"],
-    "publication": "Penguin Books",
-    "price": "261"
+    "count": "261"
 }
 
 Response:-
 {
     "data": {
-        "id": "61515c73529e6c699ea7ef3b",
-        "isbn": "9781786330100",
-        "title": "Ikigai - The Japanese Secret To A Long And Happy Life",
-        "edition": "8",
+        "id": "6151a5c8745667356039b9c4",
+        "isbn": "9780670025299",
+        "title": "How to Create a Mind: The Secret of Human Thought Revealed",
+        "edition": "2",
         "authors": [
-            "Hector Garcia"
+            "Ray Kurzweil"
         ],
-        "publication": "Newyork Books",
-        "price": 657,
-        "count": 2
+        "publication": "Viking Penguin",
+        "price": 2099,
+        "stock": 200
     },
     "status": {
         "code": "1",
         "message": "success"
+    }
+}
+Error Response:-
+{
+    "data": null,
+    "status": {
+        "code": "3",
+        "message": "Book not found."
     }
 }
 
@@ -337,22 +343,39 @@ Request:-
 }
 
 Response:-
-TBD
-
-8. Get Order By OrderId API:-
-GET http://localhost:8080/api/order/8768TY
-Response:-
 {
     "data": {
-        "id": "6150959e998f72145712b6b9",
-        "orderId": "8768TY",
+        "id": "6151a9fab7ae207c216c7e15",
+        "orderId": "8768100",
         "customerId": "12345",
         "bookIsbnList": [
             "0446677450"
         ],
         "orderDate": "22/03/20",
         "status": "created",
-        "totalItems": 2,
+        "totalItems": 1,
+        "total": 399
+    },
+    "status": {
+        "code": "1",
+        "message": "success"
+    }
+}
+
+8. Get Order By OrderId API:-
+GET http://localhost:8080/api/order/8768100
+Response:-
+{
+    "data": {
+        "id": "6151a6d5745667356039b9c9",
+        "orderId": "8768100",
+        "customerId": "12345",
+        "bookIsbnList": [
+            "0446677450"
+        ],
+        "orderDate": "22/03/20",
+        "status": "created",
+        "totalItems": 1,
         "total": 399
     },
     "status": {
@@ -367,16 +390,28 @@ Response:-
 {
     "data": [
         {
-            "id": "6150959e998f72145712b6b9",
-            "orderId": "8768TY",
-            "customerId": "12345",
+            "orderId": "8768100",
+            "customerId": "CUST123",
             "bookIsbnList": [
                 "0446677450"
             ],
             "orderDate": "22/03/20",
             "status": "created",
-            "totalItems": 2,
+            "totalItems": 1,
             "total": 399
+        },
+        {
+            "orderId": "8768101",
+            "customerId": "CUST1534",
+            "bookIsbnList": [
+                "0446677450",
+                "9781786330895",
+                "9780670025299"
+            ],
+            "orderDate": "10/05/21",
+            "status": "created",
+            "totalItems": 3,
+            "total": 2340
         }
     ],
     "status": {
@@ -386,21 +421,22 @@ Response:-
 }
 
 10. Get Orders by CustomerID API:-
-GET http://localhost:8080/api/order/customer/12345
+GET http://localhost:8080/api/order/customer/CUST1534
 Response:-
 {
     "data": [
         {
-            "id": "6150959e998f72145712b6b9",
-            "orderId": "8768TY",
-            "customerId": "12345",
+            "orderId": "8768101",
+            "customerId": "CUST1534",
             "bookIsbnList": [
-                "0446677450"
+                "0446677450",
+                "9781786330895",
+                "9780670025299"
             ],
-            "orderDate": "22/03/20",
+            "orderDate": "10/05/21",
             "status": "created",
-            "totalItems": 2,
-            "total": 399
+            "totalItems": 3,
+            "total": 2340
         }
     ],
     "status": {
@@ -410,16 +446,16 @@ Response:-
 }
 
 11. Get Month wise Statistics by CustomerID API:-
-GET http://localhost:8080/api/statistics/monthly/customer/12345/year/2020
+http://localhost:8080/api/statistics/monthly/customer/CUST1534/year/2021
 Response:-
 {
     "data": {
         "report": {
-            "Mar": {
-                "month": "Mar",
+            "May": {
+                "month": "May",
                 "totalOrderCount": 1,
-                "totalBookCount": 2,
-                "totalPurchasedAmount": 399
+                "totalBookCount": 3,
+                "totalPurchasedAmount": 2340
             }
         }
     },
