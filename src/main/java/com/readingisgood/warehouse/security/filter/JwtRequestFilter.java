@@ -17,6 +17,11 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.readingisgood.warehouse.security.BookUserDetailsService;
 
+/**
+ * 
+ * @author rahul
+ *
+ */
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 	

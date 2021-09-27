@@ -14,6 +14,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.readingisgood.warehouse.security.filter.JwtRequestFilter;
 
+/**
+ * 
+ * @author rahul
+ *
+ */
 @EnableWebSecurity
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
