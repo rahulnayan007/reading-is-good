@@ -14,12 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.readingisgood.warehouse.dto.Response;
 import com.readingisgood.warehouse.dto.Statistics;
 import com.readingisgood.warehouse.dto.StatisticsResponse;
-import com.readingisgood.warehouse.dto.Status;
 import com.readingisgood.warehouse.service.CustomerStatisticsService;
 import com.readingisgood.warehouse.util.Constants;
 
@@ -34,6 +34,7 @@ class StatisticsControllerTest {
 	private CustomerStatisticsService customerStatisticsService;
 	
 	@Test
+	@WithMockUser
 	public final void TestGetCustomerOrderStatistics() throws Exception {
 		
 		Statistics statistics = new Statistics("Jan", 1, 2, 399);
@@ -41,26 +42,25 @@ class StatisticsControllerTest {
 		report.put(statistics.getMonth(), statistics);
 		StatisticsResponse statisticsResponse = new StatisticsResponse();
 		statisticsResponse.setReport(report);
-		Response<StatisticsResponse> response = new Response<StatisticsResponse>(
-				statisticsResponse, new Status(Constants.SUCCESS_CODE, Constants.SUCCESS_MESSAGE));
 		
-		Mockito.when(customerStatisticsService.getMonthlyOrderStats("12345", "2021")).thenReturn(response);
+		Mockito.when(customerStatisticsService.getMonthlyOrderStats("12345", "2021")).thenReturn(statisticsResponse);
 		mockMvc.perform(get("/api/statistics/monthly/customer/12345/year/2021"))
 			.andExpect(status().isOk())
 			.andExpect(jsonPath("$", Matchers.notNullValue(Response.class)))
-			.andExpect(jsonPath("$.status.code", Matchers.equalTo("1")))
+			.andExpect(jsonPath("$.status.code", Matchers.equalTo(Constants.SUCCESS_CODE)))
 			.andExpect(jsonPath("$.data.report.Jan.totalOrderCount", Matchers.equalTo(1)))
 			.andExpect(jsonPath("$.data.report.Jan.totalBookCount", Matchers.equalTo(2)))
 			.andExpect(jsonPath("$.data.report.Jan.totalPurchasedAmount", Matchers.equalTo(399)));
 	}
 	
 	@Test
+	@WithMockUser
 	public final void TestGetCustomerOrderStatisticsException() throws Exception {
 		Mockito.when(customerStatisticsService.getMonthlyOrderStats("12345", "2021")).thenThrow(new NullPointerException("Unit Test Exception"));
 		mockMvc.perform(get("/api/statistics/monthly/customer/12345/year/2021"))
 			.andExpect(status().isOk())
 			.andExpect(jsonPath("$", Matchers.notNullValue(Response.class)))
-			.andExpect(jsonPath("$.status.code", Matchers.equalTo("0")))
+			.andExpect(jsonPath("$.status.code", Matchers.equalTo(Constants.FAILURE_CODE)))
 			.andExpect(jsonPath("$.data", Matchers.nullValue()));
 	}
 	
