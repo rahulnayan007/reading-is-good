@@ -7,7 +7,24 @@ mvn clean compile test install
 ## Code coverage report
 \target\site\jacoco\index.html
 
+## Log File
+\log\app.log
+
+
 ## API Details:-
+
+# All APIs are designed to adhere to a standard Request and Response format with a Status block. 
+# This system is developed on Java 11 and uses frameworks like SpringBoot, Spring Security, Swagger, logback, Junit and Jacoco.
+# The system leverages MongoDB to store data.
+
+## Note:-
+# This system requires connection to MongoDB instance. Update below properties in application.properties file according to setup.
+	spring.data.mongodb.database=book_store
+	spring.data.mongodb.host=localhost
+	spring.data.mongodb.port
+# Call Authentication API and use jwt token received in response as "Authorization" header for subsequent calls, example:-
+# Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMjAyMSIsImV4cCI6MTYzMjczMjc0OCwiaWF0IjoxNjMyNzI1NTQ4fQ.D_rM_PJNs8A70Cl0-GO_eFn5LdqbsXUeiqSg_zf-lOQ
+
 
 # 1. Authentication API:-
 POST http://localhost:8080/authenticate
@@ -21,7 +38,7 @@ POST http://localhost:8080/authenticate
     "jwt": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMjAyMSIsImV4cCI6MTYzMjczMjc0OCwiaWF0IjoxNjMyNzI1NTQ4fQ.D_rM_PJNs8A70Cl0-GO_eFn5LdqbsXUeiqSg_zf-lOQ"
 }
 
-# Note:- Authorization header in all API calls with value received in jwt field of Authentication API response. 
+
 
 # 2. Add Customer API:-
 POST http://localhost:8080/api/customer/
@@ -89,6 +106,7 @@ POST http://localhost:8080/api/customer/
     }
 }
 
+
 # 3. Add Customers API:-
 POST http://localhost:8080/api/customer/list
 # Request:-
@@ -146,7 +164,6 @@ POST http://localhost:8080/api/customer/list
 {
     "data": [
         {
-            "id": "61516ccb81a83b451e7a6b63",
             "customerId": "CUST1534",
             "firstName": "Avinash",
             "lastName": "Mahale",
@@ -165,7 +182,6 @@ POST http://localhost:8080/api/customer/list
             ]
         },
         {
-            "id": "61516ccb81a83b451e7a6b64",
             "customerId": "CUST129",
             "firstName": "Sabir",
             "lastName": "Ali",
@@ -199,6 +215,7 @@ POST http://localhost:8080/api/customer/list
     }
 }
 
+
 # 4. Add Book API:-
 POST http://localhost:8080/api/book/
 # Request:-
@@ -215,7 +232,6 @@ POST http://localhost:8080/api/book/
 # Response:-
 {
     "data": {
-        "id": "61519b967da255436ac81969",
         "isbn": "9781786330895",
         "title": "Ikigai - The Japanese Secret To A Long And Happy Life",
         "edition": "1",
@@ -233,6 +249,7 @@ POST http://localhost:8080/api/book/
         "message": "success"
     }
 }
+
 
 # 5. Add Books API:-
 POST http://localhost:8080/api/book/list/
@@ -264,7 +281,6 @@ POST http://localhost:8080/api/book/list/
 {
     "data": [
         {
-            "id": "61519c017da255436ac8196a",
             "isbn": "9780670025299",
             "title": "How to Create a Mind: The Secret of Human Thought Revealed",
             "edition": "2",
@@ -276,7 +292,6 @@ POST http://localhost:8080/api/book/list/
             "stock": 10
         },
         {
-            "id": "61519c017da255436ac8196b",
             "isbn": "0446677450",
             "title": "Rich Dad Poor Dad",
             "edition": "5",
@@ -307,7 +322,6 @@ PATCH http://localhost:8080/api/book
 # Response:-
 {
     "data": {
-        "id": "6151a5c8745667356039b9c4",
         "isbn": "9780670025299",
         "title": "How to Create a Mind: The Secret of Human Thought Revealed",
         "edition": "2",
@@ -324,6 +338,7 @@ PATCH http://localhost:8080/api/book
     }
 }
 
+
 # Error Response:-
 {
     "data": null,
@@ -333,47 +348,49 @@ PATCH http://localhost:8080/api/book
     }
 }
 
+
 # 7. Add Order API:-
 POST http://localhost:8080/api/order/
 # Request:-
 {
-    "orderId": "8768TY",
-    "customerId": "12345",
-    "bookIsbnList": ["0446677450"],
-    "orderDate": "22/03/20",
+    "orderId": "8768101",
+    "customerId": "CUST1534",
+    "bookIsbnList": ["0446677450", "9781786330895", "9780670025299"],
+    "orderDate": "10/05/21",
     "status": "created",
-    "totalItems": "2",
-    "total": "399"
+    "totalItems": "3",
+    "total": "2340"
 }
 
 # Response:-
 {
     "data": {
-        "id": "6151a9fab7ae207c216c7e15",
-        "orderId": "8768100",
-        "customerId": "12345",
+        "orderId": "8768101",
+        "customerId": "CUST1534",
         "bookIsbnList": [
-            "0446677450"
+            "0446677450",
+            "9781786330895",
+            "9780670025299"
         ],
-        "orderDate": "22/03/20",
+        "orderDate": "10/05/21",
         "status": "created",
-        "totalItems": 1,
-        "total": 399
+        "totalItems": 3,
+        "total": 2340
     },
     "status": {
         "code": "1",
         "message": "success"
     }
 }
+
 
 # 8. Get Order By OrderId API:-
 GET http://localhost:8080/api/order/8768100
 # Response:-
 {
     "data": {
-        "id": "6151a6d5745667356039b9c9",
         "orderId": "8768100",
-        "customerId": "12345",
+        "customerId": "CUST123",
         "bookIsbnList": [
             "0446677450"
         ],
@@ -387,6 +404,7 @@ GET http://localhost:8080/api/order/8768100
         "message": "success"
     }
 }
+
 
 # 9. Get Orders Within Date Range API:-
 GET http://localhost:8080/api/order/startDate/01-05-19/endDate/19-09-21
@@ -424,6 +442,7 @@ GET http://localhost:8080/api/order/startDate/01-05-19/endDate/19-09-21
     }
 }
 
+
 # 10. Get Orders by CustomerID API:-
 GET http://localhost:8080/api/order/customer/CUST1534
 # Response:-
@@ -449,6 +468,7 @@ GET http://localhost:8080/api/order/customer/CUST1534
     }
 }
 
+
 # 11. Get Month wise Statistics by CustomerID API:-
 http://localhost:8080/api/statistics/monthly/customer/CUST1534/year/2021
 # Response:-
@@ -469,11 +489,12 @@ http://localhost:8080/api/statistics/monthly/customer/CUST1534/year/2021
     }
 }
 
+
 # 12. Swagger API Docs:-
 GET http://localhost:8080/api-docs
+
 
 # 13. Swagger UI:-
 GET http://localhost:8080/swagger-ui/index.html
 
-# All business APIs are designed to contain data in response along with satus which tells if the request processing was successful or a failure. 
-# SpringBoot, Spring security, MongoDB, swagger, Junit and Jocaco have been used to develop this Application.
+
