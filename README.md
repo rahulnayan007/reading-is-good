@@ -1,8 +1,11 @@
 ## reading-is-good
 centralized warehouse for ReadingIsGood
 
-## Compile Command
+## Maven command to compile and test
 mvn clean compile test install
+
+## Maven command to run app from command prompt
+mvn spring-boot:run
 
 ## Code coverage report
 \target\site\jacoco\index.html
