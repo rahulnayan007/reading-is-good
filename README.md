@@ -46,68 +46,68 @@ POST http://localhost:8080/authenticate
 ## 2. Add Customer API:-
 POST http://localhost:8080/api/customer/
 ## Request:-
-{
-    "customerId": "CUST123",
-    "firstName": "Rahul",
-    "lastName": "Nayan",
-    "mobile": "8764563456",
-    "email": "rn@hotmail.com",
-    "addresses": [
-        {
-            "addressId": "695",
-            "addressLine1": "11 Park Avenue",
-            "addressLine2": "Pheonix Citadel",
-            "zipcode": "560000",
-            "city": "Begaluru",
-            "state": "Karnataka",
-            "type": "Home"
-        },
-        {
-            "addressId": "696",
-            "addressLine1": "A To Z Corp",
-            "addressLine2": "It Park",
-            "zipcode": "560011",
-            "city": "Bengaluru",
-            "state": "Karnataka",
-            "type": "Office"
-        }
-    ]
-}
+	{
+		"customerId": "CUST123",
+		"firstName": "Rahul",
+		"lastName": "Nayan",
+		"mobile": "8764563456",
+		"email": "rn@hotmail.com",
+		"addresses": [
+			{
+				"addressId": "695",
+				"addressLine1": "11 Park Avenue",
+				"addressLine2": "Pheonix Citadel",
+				"zipcode": "560000",
+				"city": "Begaluru",
+				"state": "Karnataka",
+				"type": "Home"
+			},
+			{
+				"addressId": "696",
+				"addressLine1": "A To Z Corp",
+				"addressLine2": "It Park",
+				"zipcode": "560011",
+				"city": "Bengaluru",
+				"state": "Karnataka",
+				"type": "Office"
+			}
+		]
+	}
 
 ## Response:-
-{
-    "data": {
-        "customerId": "CUST123",
-        "firstName": "Rahul",
-        "lastName": "Nayan",
-        "mobile": "8764563456",
-        "email": "rn@hotmail.com",
-        "addresses": [
-            {
-                "addressId": "695",
-                "addressLine1": "11 Park Avenue",
-                "addressLine2": "Pheonix Citadel",
-                "zipcode": "560000",
-                "city": "Begaluru",
-                "state": "Karnataka",
-                "type": "Home"
-            },
-            {
-                "addressId": "696",
-                "addressLine1": "A To Z Corp",
-                "addressLine2": "It Park",
-                "zipcode": "560011",
-                "city": "Bengaluru",
-                "state": "Karnataka",
-                "type": "Office"
-            }
-        ]
-    },
-    "status": {
-        "code": "1",
-        "message": "success"
-    }
-}
+	{
+		"data": {
+			"customerId": "CUST123",
+			"firstName": "Rahul",
+			"lastName": "Nayan",
+			"mobile": "8764563456",
+			"email": "rn@hotmail.com",
+			"addresses": [
+				{
+					"addressId": "695",
+					"addressLine1": "11 Park Avenue",
+					"addressLine2": "Pheonix Citadel",
+					"zipcode": "560000",
+					"city": "Begaluru",
+					"state": "Karnataka",
+					"type": "Home"
+				},
+				{
+					"addressId": "696",
+					"addressLine1": "A To Z Corp",
+					"addressLine2": "It Park",
+					"zipcode": "560011",
+					"city": "Bengaluru",
+					"state": "Karnataka",
+					"type": "Office"
+				}
+			]
+		},
+		"status": {
+			"code": "1",
+			"message": "success"
+		}
+	}
 
 
 ## 3. Add Customers API:-
@@ -502,7 +502,7 @@ GET http://localhost:8080/swagger-ui/index.html
 
 
 ## Steps to use Docker for running mondogb and app seperately
-	Run below commands at docker cli:-
+	Run below commands at docker cli
 	docker pull mongo:latest
 	docker run -d -p 27017:27017 --name bookstoremongodb:1.0 mongo:latest
 
@@ -519,11 +519,11 @@ GET http://localhost:8080/swagger-ui/index.html
 	db.customer.find().pretty()
 	db.order.find().pretty()
 
-##Switch to directroy of Dockerfile and execute below commands:-
+##Switch to directroy of Dockerfile and execute below commands
 	docker build -t readingisgood:1.0 .
 	docker run -p 8080:8080 --name readingisgood --link bookstoremongodb:mongo - d readingisgood:1.0
 
-##Check app logs:-
+##Check app logs
 	docker logs readingisgood
 
 
