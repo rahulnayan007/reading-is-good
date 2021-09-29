@@ -1,5 +1,5 @@
 ## reading-is-good
-	centralized warehouse for ReadingIsGood
+	Documentation for centralized warehouse system for ReadingIsGood
 
 ## Maven command to compile and test
 	mvn clean compile test install
@@ -27,7 +27,7 @@
 	spring.data.mongodb.port
 	
 ## Call Authentication API and use jwt token received in response as "Authorization" header for subsequent calls, example:-
-## Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMjAyMSIsImV4cCI6MTYzMjczMjc0OCwiaWF0IjoxNjMyNzI1NTQ4fQ.D_rM_PJNs8A70Cl0-GO_eFn5LdqbsXUeiqSg_zf-lOQ
+	Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMjAyMSIsImV4cCI6MTYzMjczMjc0OCwiaWF0IjoxNjMyNzI1NTQ4fQ.D_rM_PJNs8A70Cl0-GO_eFn5LdqbsXUeiqSg_zf-lOQ
 
 
 ## 1. Authentication API:-
