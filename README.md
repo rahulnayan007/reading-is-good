@@ -501,3 +501,29 @@ GET http://localhost:8080/api-docs
 GET http://localhost:8080/swagger-ui/index.html
 
 
+# Steps to use Docker for running mondogb and app seperately
+Run below commands at docker cli:-
+docker pull mongo:latest
+docker run -d -p 27017:27017 --name bookstoremongodb:1.0 mongo:latest
+
+# Steps to login to mongo shell
+docker exce -it bookstoremongodb bash
+
+# Use below commands to get mongo shell
+mongo
+
+# Use mongo commands
+show dbs
+use book_store
+db.book.find().pretty()
+db.customer.find().pretty()
+db.order.find().pretty()
+
+#Switch to directroy of Dockerfile and execute below commands:-
+docker build -t readingisgood:1.0 .
+docker run -p 8080:8080 --name readingisgood --link bookstoremongodb:mongo - d readingisgood:1.0
+
+#Check app logs:-
+docker logs readingisgood
+
+
